@@ -1,0 +1,38 @@
+footer {
+    margin-top: 64px;
+    margin-bottom: 48px;
+}
+
+.footer__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 48px;
+    margin-bottom: 24px;
+}
+
+.footer__img {
+    height: 100px;
+    width: 100px;
+    opacity: 0.7;
+}
+
+.footer__list {
+    display: flex;
+    justify-content: center;
+}
+
+.footer__link {
+    position: relative;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 12px 48px;
+}
+
+.footer__copyright {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+    color: white;
+}
