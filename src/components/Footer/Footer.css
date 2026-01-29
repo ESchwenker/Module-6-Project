@@ -20,6 +20,7 @@ footer {
 .footer__list {
     display: flex;
     justify-content: center;
+    gap: 68px;
 }
 
 .footer__link {
@@ -27,7 +28,6 @@ footer {
     color: white;
     font-size: 18px;
     font-weight: 700;
-    margin: 12px 48px;
 }
 
 .footer__copyright {
@@ -35,4 +35,24 @@ footer {
     justify-content: center;
     padding: 12px 0;
     color: white;
+}
+
+
+@media (max-width: 480px) {
+    .footer__img {
+        width: 50px;
+        height: 50px;
+    }
+
+.footer__link {
+    font-size: 12px;
+}
+
+.footer__list {
+    gap: 34px;
+}
+.footer__copyright {
+    font-size: 12px;
+}
+
 }
