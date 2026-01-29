@@ -4,7 +4,7 @@ import popcorn_logo from '../../assets/popcorn_logo.png'
 
 const Nav = () => {
   return (
-    <div className="nav">
+    <section id="nav">
       <div className="nav__container">
         <div className="nav__info">
           <figure className="nav__logo">
@@ -18,7 +18,7 @@ const Nav = () => {
             </div>
           </div>
       </div>
-    </div>
+    </section>
   )
 }
 

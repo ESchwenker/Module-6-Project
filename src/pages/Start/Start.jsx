@@ -29,8 +29,8 @@ function Start () {
               <button className="start__btn">Roll Film</button>
             </div>
           </div>
-          <footer>
-            <img className="footer__img" src={popcorn_banner} alt="popcorn"/>
+          <footer className="start__footer">
+            <img className="footer__img-start" src={popcorn_banner} alt="popcorn"/>
           </footer>
     </div>
   )

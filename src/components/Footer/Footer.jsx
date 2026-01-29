@@ -14,7 +14,7 @@ const Footer = () => {
           </div>
         </a>
         <div className="footer__list">
-          <a href="#landing" className="footer__link">Beam Me Up, Scotty!</a>
+          <a href="#nav" className="footer__link">Beam Me Up, Scotty!</a>
           <a href="#main" className="footer__link">Find Your Flick</a>
           <a href="#" className="footer__link">Contact</a>
         </div>

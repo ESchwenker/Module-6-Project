@@ -67,7 +67,7 @@ h2 {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;        /* this controls the space under the text */
+  bottom: -6px;        /* this controls the space under the text
   width: 100%;
   height: 2px;         /* thickness of the underline */
   background-color: rgb(207, 36, 21);
@@ -187,7 +187,7 @@ h2 {
     color: white;
 }
 
-.footer__img {
+.footer__img-start {
     width: 100%;
     height: 500px;
     margin-top: -300px;
@@ -263,4 +263,4 @@ h2 {
 .footer__img {
     height: 250px;
 }
-}
+} */
