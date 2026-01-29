@@ -1,0 +1,266 @@
+body {
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style-type: none;
+}
+
+.nav__container-start {
+    width: 100%;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.nav__info-start {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px;
+}
+
+
+h2 {
+    font-size: 32px;
+}
+
+.nav__logo-start {
+    display: flex;
+    align-items: center;
+}
+
+.nav__img-start {
+    height: 100px;
+    width: 100px;
+}
+
+.title-start {
+    padding: 12px;
+    color: black;
+}
+
+.nav__links-start {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav__link-start {
+    position: relative;
+}
+
+.nav__link-start::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;        /* this controls the space under the text */
+  width: 100%;
+  height: 2px;         /* thickness of the underline */
+  background-color: rgb(207, 36, 21);
+  opacity: 0;
+}
+
+.nav__link-start:hover::after {
+  opacity: 1;
+  transition: opacity 800ms ease;
+}
+
+.nav__link-start,
+.nav__btn-start {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.nav__link-start {
+    color: black;
+}
+
+.nav__btn-start {
+    color: white;
+}
+
+.nav__btn-start {
+    border: 2px solid white;
+    border-radius: 50px;
+    background-color: rgb(219, 3, 3);
+    padding: 12px;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.nav__btn-start:hover {
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+}
+
+.nav__btn-start:active {
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+}
+
+.start__info {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.start__description{
+    text-align: center;
+    font-size: 38px;
+    color: rgb(219, 3, 3);
+    width: 75%;
+    margin-bottom: 24px;
+}
+
+.start__tag {
+    font-size: 24px;
+    letter-spacing: 8px;
+    margin-bottom: 64px;
+    display: flex;
+    text-align: center;
+    z-index: 2;
+}
+
+.start__search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 24px;
+    z-index: 2;
+}
+
+.start__input {
+    border-radius: 14px;
+    border: 1px solid black;
+    padding: 4px;
+    width: 500px;
+}
+
+.start__input::placeholder {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.443);
+    letter-spacing: 2px;
+    padding: 8px;
+}
+
+.start__btn {
+    background-color:rgb(207, 36, 21);
+    border: none;
+    border-radius: 50px;
+    font-size: 24px;
+    color: white;
+    height: 50px;
+    width: 100px;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.start__btn:hover {
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+}
+
+.start__btn:active {
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+}
+
+.footer__img {
+    width: 100%;
+    height: 500px;
+    margin-top: -300px;
+}
+
+
+@media (max-width: 650px) {
+.title-start {
+    font-size: 24px;
+}
+
+.nav__img-start {
+    width: 80px;
+    height: 80px;
+}
+
+.nav__link-start,
+.nav__btn-start {
+    font-size: 12px;
+}
+
+.start__input {
+    padding: 4px;
+    width: 400px;
+}
+
+.start__input::placeholder {
+    font-size: 20px;
+}
+
+.start__btn {
+    font-size: 20px;
+}
+
+.footer__img {
+    height: 350px;
+}
+}
+
+@media (max-width: 480px) {
+.nav__link-start {
+    display: none;
+}
+
+.start__description {
+    font-size: 28px;
+}
+
+.start__tag {
+    font-size: 20px;
+}
+
+.start__search {
+    display: flex;
+    flex-direction: column;
+}
+
+.start__input {
+    padding: 4px;
+    width: 350px;
+}
+
+.start__input::placeholder {
+    font-size: 16px;
+}
+
+.start__btn {
+    font-size: 16px;
+    width: 80px;
+    height: 40px;
+}
+
+.footer__img {
+    height: 250px;
+}
+}

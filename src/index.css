@@ -11,20 +11,5 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    background-color: black;
-}
-
-a {
-    text-decoration: none;
-}
-
-ul {
-    display: flex;
-}
-
-li {
-    list-style-type: none;
-}
 
 
