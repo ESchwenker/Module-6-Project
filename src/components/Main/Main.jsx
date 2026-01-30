@@ -38,7 +38,7 @@ const Main = () => {
                         value={searchValue}
                         onChange={(event) => setSearchValue(event.target.value)}
                         placeholder="Find your flick"/>
-                        <img className="search__img" src={search__btn} alt=""/>
+                        <img className="search__img" src={search__btn} onClick={getMovies(searchValue)} alt=""/>
                     </div>
                 </div>
             </div>
@@ -63,9 +63,9 @@ const Main = () => {
       <div className="all__movies">
         <div className="movies">
           {
-            movies.map((movie) => {
+            movies.map((movie) => 
             <MovieCard movie={movie} key={movie.imdbID}
-            />})
+            />)
           }
         </div>
       </div>

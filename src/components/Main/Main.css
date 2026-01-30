@@ -122,7 +122,7 @@ select {
     margin-top: 48px;
 }
 
-.all__movies {
+.movies {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
