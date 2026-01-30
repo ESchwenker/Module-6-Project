@@ -2,6 +2,7 @@ import React from 'react'
 import './Start.css'
 import popcorn_logo from '../../assets/popcorn_logo.png'
 import popcorn_banner from '../../assets/popcorn_banner.jpg'
+import { Link } from 'react-router-dom'
 
 function Start () {
   return (
@@ -15,7 +16,7 @@ function Start () {
                 </figure>
                 <div className="nav__links-start">
                     <a href="#" className="nav__link-start">Home</a>
-                    <a href="#" className="nav__link-start">Find Your Flick</a>
+                    <Link to="/home" className="nav__link-start">Find Your Flick</Link>
                     <button className="nav__btn-start" a href="#">Contact</button>
                   </div>
                 </div>

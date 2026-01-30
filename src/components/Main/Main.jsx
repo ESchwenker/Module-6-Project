@@ -10,36 +10,13 @@ const Main = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
-  let currentMovies = []
-
-  function searchChange(search) {
-  getMovies(search)
-  }
-
   async function getMovies(searchTerm) {
     const { data } = await axios.get("https://www.omdbapi.com/?apikey=a5e7ab33&s=harry")
     const movieData = data.Search
     setMovies(movieData);
     setSearchValue(searchTerm);
-
-
-    function sortChange(event) {
-    const sortOption = event.target.value
-
-    let sortedMovies = [...currentMovies]
-
-    if (sortOption === "newest") {
-      sortedMovies.sort((a, b) => b.Year - a.Year)
-    } else if (sortOption === "oldest") {
-      sortedMovies.sort((a, b) => a.Year - b.Year)
-    } else if (sortOption === "name") {
-      sortedMovies.sort((a, b) => a.Title.toLowerCase().localeCompare(b.Title.toLowerCase()))
-    }
-
+    console.log(movieData)
   }
-  }
-
-
 
  useEffect(() => {
   getMovies();
@@ -58,7 +35,8 @@ const Main = () => {
                       <input
                         type="text"
                         className="main__search--input"
-                        onChange={(event) => searchChange(event.target.value)}
+                        value={searchValue}
+                        onChange={(event) => setSearchValue(event.target.value)}
                         placeholder="Find your flick"/>
                         <img className="search__img" src={search__btn} alt=""/>
                     </div>
@@ -74,7 +52,7 @@ const Main = () => {
               <span className="searchName">{searchValue}</span>
             </h2>
             <select id="movieSort" onChange={(event) => sortChange(event.target.value)}>
-              <option value="" disabled defaultValue="Sort By">Sort By</option>
+              <option value="" defaultValue="Sort By">Sort By</option>
               <option value="name">Name, A to Z</option>
               <option value="newest">Release Date, Newest</option>
               <option value="oldest">Release Date, Oldest</option>
@@ -86,7 +64,7 @@ const Main = () => {
         <div className="movies">
           {
             movies.map((movie) => {
-            <MovieCard movie={movie} key={movie.imbdID}
+            <MovieCard movie={movie} key={movie.imdbID}
             />})
           }
         </div>

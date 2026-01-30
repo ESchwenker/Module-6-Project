@@ -1,6 +1,7 @@
 import React from 'react'
 import './Nav.css'
 import popcorn_logo from '../../assets/popcorn_logo.png'
+import { Link } from 'react-router-dom'
 
 const Nav = () => {
   return (
@@ -12,8 +13,8 @@ const Nav = () => {
               <h2 className="title">PopcornPix</h2>
           </figure>
           <div className="nav__links">
-              <a href="#" className="nav__link">Home</a>
-              <a href="#" className="nav__link">Find Your Flick</a>
+              <Link to="/" className="nav__link">Home</Link>
+              <Link to="/" className="nav__link">Find Your Flick</Link>
               <button className="nav__btn" a href="#">Contact</button>
             </div>
           </div>
