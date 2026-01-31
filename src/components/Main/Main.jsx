@@ -10,17 +10,32 @@ const Main = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
+
+  let currentMovies = []
+
   async function getMovies(searchTerm) {
-    const { data } = await axios.get("https://www.omdbapi.com/?apikey=a5e7ab33&s=harry")
+    const { data } = await axios.get(`https://www.omdbapi.com/?apikey=a5e7ab33&s=${searchTerm}`)
     const movieData = data.Search
     setMovies(movieData);
+    movieData(currentMovies);
     setSearchValue(searchTerm);
-    console.log(movieData)
+    console.log(currentMovies)
   }
 
- useEffect(() => {
-  getMovies();
- }, [])
+  function sortBy(filter) {
+    console.log(filter);
+
+  let sortedMovies = [...currentMovies]
+
+  if (filter === "newest") {
+    sortedMovies(movieData.slice().sort((a, b) => b.Year - a.Year)
+  // } else if (filter === "oldest") {
+  //   sortedMovies.sort((a, b) => a.Year - b.Year)
+  // } else if (filter === "name") {
+  //   sortedMovies.sort((a, b) => a.Title.toLowerCase().localeCompare(b.Title.toLowerCase()))
+  // }
+
+  setMovies(sortedMovies)}
   
 
   return (
@@ -38,7 +53,7 @@ const Main = () => {
                         value={searchValue}
                         onChange={(event) => setSearchValue(event.target.value)}
                         placeholder="Find your flick"/>
-                        <img className="search__img" src={search__btn} onClick={getMovies(searchValue)} alt=""/>
+                        <img className="search__img" src={search__btn} onClick={() => getMovies(searchValue)} alt=""/>
                     </div>
                 </div>
             </div>
@@ -51,7 +66,7 @@ const Main = () => {
               The "reel" results...
               <span className="searchName">{searchValue}</span>
             </h2>
-            <select id="movieSort" onChange={(event) => sortChange(event.target.value)}>
+            <select id="movieSort" onChange={(event) => sortBy(event.target.value)}>
               <option value="" defaultValue="Sort By">Sort By</option>
               <option value="name">Name, A to Z</option>
               <option value="newest">Release Date, Newest</option>
@@ -62,11 +77,11 @@ const Main = () => {
       </div>
       <div className="all__movies">
         <div className="movies">
-          {
-            movies.map((movie) => 
+            {movies.length > 0 && (
+              movies.slice(0, 9).map(movie => (
             <MovieCard movie={movie} key={movie.imdbID}
-            />)
-          }
+            />))
+            )}
         </div>
       </div>
   </section>
