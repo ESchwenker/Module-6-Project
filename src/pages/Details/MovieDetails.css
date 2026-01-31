@@ -1,0 +1,66 @@
+.details-page {
+    color: white;
+    background: black;
+    height: 100%;
+    padding-bottom: 50px;
+}
+
+.return-btn {
+    color: black;
+    background-color: white;
+    border-radius: 8px;
+    border: none;
+    font-size: 24px;
+    padding: 4px;
+    margin-left: 12px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.return-btn:hover {
+    background-color: rgba(255, 255, 255, 0.66);
+}
+
+.return-btn:active {
+    color: white;
+    background-color: black;
+}
+
+.movie-details {
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+}
+
+.detail-poster {
+    border-radius: 24px;
+    width: 40%;
+    height: 75%;
+}
+
+.movie-info {
+    padding-left: 24px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.detail-title {
+    margin-bottom: 4px;
+}
+
+.detail-description {
+    letter-spacing: 4px;
+}
+
+.detail-plot {
+    padding: 18px 0;
+    font-size: 18px;
+}
+
+.detail-rating {
+    padding: 18px 0;
+    letter-spacing: 2px;
+}

@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Start.css'
 import popcorn_logo from '../../assets/popcorn_logo.png'
 import popcorn_banner from '../../assets/popcorn_banner.jpg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Start () {
+  const navigate = useNavigate()
+  const [query, setQuery] = useState("")
+
+  function handleSearch() {
+    if (!query.trim()) return
+    navigate(`/home?search=${encodeURIComponent(query)}`)
+  }
+
   return (
     <div className="start">
           <div className="nav-start">
@@ -26,8 +34,13 @@ function Start () {
             <div className="start__description">America's #1 site to search for the movies everyone knows and loves.</div>
             <p className="start__tag">ROLL THE REELS... AND START SEARCHING!</p>
             <div className="start__search">
-              <input className="start__input" type="text" placeholder="Find your flix with PopcornPix!"/>
-              <button className="start__btn">Roll Film</button>
+              <input className="start__input" 
+              type="text" 
+              placeholder="Find your flix with PopcornPix!"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              onKeyDown={(event) => event.key === "Enter" && handleSearch()}/>
+              <button className="start__btn" onClick={handleSearch}>Roll Film</button>
             </div>
           </div>
           <footer className="start__footer">

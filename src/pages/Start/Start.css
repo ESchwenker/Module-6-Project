@@ -152,15 +152,16 @@ h2 {
 .start__input {
     border-radius: 14px;
     border: 1px solid black;
-    padding: 4px;
+    background: transparent;
+    padding: 12px;
     width: 500px;
+    height: 52px;
 }
 
 .start__input::placeholder {
-    font-size: 24px;
+    font-size: 28px;
     color: rgba(0, 0, 0, 0.443);
     letter-spacing: 2px;
-    padding: 8px;
 }
 
 .start__btn {

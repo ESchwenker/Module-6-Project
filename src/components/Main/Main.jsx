@@ -4,38 +4,63 @@ import MovieCard from '../MovieCard/MovieCard'
 import popcorn_banner from '../../assets/popcorn_banner.jpg'
 import search__btn from '../../assets/search__btn.png'
 import axios from 'axios'
+import { useSearchParams } from 'react-router-dom'
 
 const Main = () => {
 
   const [movies, setMovies] = useState([]);
+  const [displayMovies, setDisplayMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
-
-  let currentMovies = []
+  const [searchParams, setSearchParams] = useSearchParams()
+  const urlSearch = searchParams.get("search") || ""
+  const [isLoading, setIsLoading] = useState(false)
 
   async function getMovies(searchTerm) {
+    if (!searchTerm) return
+
+    setIsLoading(true)
+
+    try {
     const { data } = await axios.get(`https://www.omdbapi.com/?apikey=a5e7ab33&s=${searchTerm}`)
-    const movieData = data.Search
-    setMovies(movieData);
-    movieData(currentMovies);
-    setSearchValue(searchTerm);
-    console.log(currentMovies)
+    const movieData = data.Search || []
+
+      setMovies(movieData);
+      setDisplayMovies(movieData);
+      setSearchValue(searchTerm);
+    } catch (error) {
+      console.error(error)
+      setDisplayMovies([])
+    } finally {
+      setIsLoading(false)
+    }
   }
+
+  console.log("displayMovies:", displayMovies);
+  console.log("searchValue:", searchValue);
 
   function sortBy(filter) {
     console.log(filter);
 
-  let sortedMovies = [...currentMovies]
+    
+    let sortedMovies = [...displayMovies]
 
-  if (filter === "newest") {
-    sortedMovies(movieData.slice().sort((a, b) => b.Year - a.Year)
-  // } else if (filter === "oldest") {
-  //   sortedMovies.sort((a, b) => a.Year - b.Year)
-  // } else if (filter === "name") {
-  //   sortedMovies.sort((a, b) => a.Title.toLowerCase().localeCompare(b.Title.toLowerCase()))
-  // }
+    if (filter === "newest") {
+      sortedMovies.sort((a, b) => b.Year - a.Year)
+    } else if (filter === "oldest") {
+      sortedMovies.sort((a, b) => a.Year - b.Year)
+    } else if (filter === "name") {
+      sortedMovies.sort((a, b) => a.Title.toLowerCase().localeCompare(b.Title.toLowerCase()))
+    }
 
-  setMovies(sortedMovies)}
+    setDisplayMovies(sortedMovies)
+  }
+
+  useEffect(() => {
+    if (urlSearch) {
+      setSearchValue(urlSearch)
+      getMovies(urlSearch)
+    }
+  }, [urlSearch])
   
 
   return (
@@ -52,8 +77,10 @@ const Main = () => {
                         className="main__search--input"
                         value={searchValue}
                         onChange={(event) => setSearchValue(event.target.value)}
+                        onKeyDown={(event) => event.key === "Enter" && getMovies(searchValue)}
                         placeholder="Find your flick"/>
-                        <img className="search__img" src={search__btn} onClick={() => getMovies(searchValue)} alt=""/>
+                        <img className="search__img" src={search__btn} 
+                        onClick={() => { if(searchValue.trim()) { setSearchParams({ search: searchValue})}}} alt=""/>
                     </div>
                 </div>
             </div>
@@ -61,7 +88,7 @@ const Main = () => {
     </div>
     <div className="options__container">
         <div className="options__row">
-          <div id="info" className="options__header hidden">
+          <div id="info" className={`options__header ${searchValue && !isLoading ? "show" : "hide"}`}>
             <h2 className="options__title options__header--title">
               The "reel" results...
               <span className="searchName">{searchValue}</span>
@@ -77,10 +104,14 @@ const Main = () => {
       </div>
       <div className="all__movies">
         <div className="movies">
-            {movies.length > 0 && (
-              movies.slice(0, 9).map(movie => (
-            <MovieCard movie={movie} key={movie.imdbID}
-            />))
+          {isLoading?(<div className="loading">Sit tight, loading movies...</div>) :
+            displayMovies.length === 0 && searchValue ? (
+            <div className="no-results">
+              Sorry, no results found for "{searchValue}"
+                  </div>) : (displayMovies.length > 0 && (
+              displayMovies.slice(0, 9).map(movie => (
+              <MovieCard movie={movie} key={movie.imdbID}
+            />)))
             )}
         </div>
       </div>
