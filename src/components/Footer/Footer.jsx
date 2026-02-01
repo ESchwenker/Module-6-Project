@@ -15,7 +15,7 @@ const Footer = () => {
         </a>
         <div className="footer__list">
           <a href="#nav" className="footer__link">Beam Me Up, Scotty!</a>
-          <a href="#main" className="footer__link">Find Your Flick</a>
+          <a href="#nav" className="footer__link">Find Your Flick</a>
           <a href="#" className="footer__link">Contact</a>
         </div>
         <div className="footer__copyright">Copyright &copy; 2025 ElizabethSchwenker</div>
