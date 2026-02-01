@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Main.css'
 import MovieCard from '../MovieCard/MovieCard'
 import popcorn_banner from '../../assets/popcorn_banner.jpg'
@@ -14,6 +14,7 @@ const Main = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const urlSearch = searchParams.get("search") || ""
   const [isLoading, setIsLoading] = useState(false)
+  const moviesRef = useRef(null)
 
   async function getMovies(searchTerm) {
     if (!searchTerm) return
@@ -61,6 +62,15 @@ const Main = () => {
       getMovies(urlSearch)
     }
   }, [urlSearch])
+
+  useEffect(() => {
+    if (displayMovies.length > 0) {
+      moviesRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+    }
+  }, [displayMovies])
   
 
   return (
@@ -77,10 +87,16 @@ const Main = () => {
                         className="main__search--input"
                         value={searchValue}
                         onChange={(event) => setSearchValue(event.target.value)}
-                        onKeyDown={(event) => event.key === "Enter" && getMovies(searchValue)}
-                        placeholder="Find your flick"/>
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter" && searchValue.trim()) { 
+                            setSearchParams (
+                              { search: searchValue}, 
+                              { replace: true}
+                          )
+                        }}}
+                        placeholder="Find your flick" />
                         <img className="search__img" src={search__btn} 
-                        onClick={() => { if(searchValue.trim()) { setSearchParams({ search: searchValue})}}} alt=""/>
+                        onClick={() => { if(searchValue.trim()) { setSearchParams({ search: searchValue}, {replace:true})}}} alt=""/>
                     </div>
                 </div>
             </div>
@@ -102,7 +118,7 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className="all__movies">
+      <div className="all__movies" ref={moviesRef}>
         <div className="movies">
           {isLoading?(<div className="loading">Sit tight, loading movies...</div>) :
             displayMovies.length === 0 && searchValue ? (
