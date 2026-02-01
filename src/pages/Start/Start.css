@@ -168,10 +168,11 @@ h2 {
     background-color:rgb(207, 36, 21);
     border: none;
     border-radius: 50px;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     height: 50px;
     width: 100px;
+    padding: 4px;
     cursor: pointer;
     transition: all 200ms ease;
 }
@@ -196,7 +197,7 @@ h2 {
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
 .title-start {
     font-size: 24px;
 }
@@ -224,22 +225,28 @@ h2 {
     font-size: 20px;
 }
 
-.footer__img {
+.footer__img-start {
     height: 350px;
 }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
 .nav__link-start {
     display: none;
 }
 
 .start__description {
-    font-size: 28px;
+    font-size: 32px;
 }
 
 .start__tag {
     font-size: 20px;
+}
+}
+
+@media (max-width: 480px) {
+.start__description {
+    font-size: 28px;
 }
 
 .start__search {
@@ -262,7 +269,7 @@ h2 {
     height: 40px;
 }
 
-.footer__img {
+.footer__img-start {
     height: 250px;
 }
 }

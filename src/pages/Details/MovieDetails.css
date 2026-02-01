@@ -1,6 +1,6 @@
 .details-page {
     color: white;
-    background: black;
+    background-color: rgb(48, 43, 43);
     height: 100%;
     padding-bottom: 50px;
 }
@@ -63,4 +63,58 @@
 .detail-rating {
     padding: 18px 0;
     letter-spacing: 2px;
+}
+
+
+
+@media (max-width: 1000px) {
+.movie-details {
+    padding: 75px 24px;
+}
+}
+
+
+@media (max-width: 768px) {
+.return-btn {
+    font-size: 20px;
+}
+
+.movie-details {
+    padding: 75px 0px;
+}
+}
+
+
+@media (max-width: 480px) {
+.return-btn {
+    font-size: 18px;
+}
+
+.movie-details {
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-poster {
+    width: 60%;
+}
+
+.movie-info {
+    margin-top: 12px;
+    width: 70%;
+}
+
+.detail-title {
+    margin-bottom: 4px;
+    font-size: 24px;
+}
+
+.detail-description {
+    font-size: 12px;
+}
+
+.detail-rating,
+.detail-para {
+    font-size: 12px;
+}
 }
